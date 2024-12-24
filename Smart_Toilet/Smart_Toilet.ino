@@ -35,7 +35,10 @@ void setup() {
   lcd.backlight();
   lcd.init(); 
   lcd.begin(16, 2);
-  lcd.setCursor(0, 0); 
+   lcd.setCursor(0, 0); 
+  lcd.print("Welcome ");
+  
+  lcd.setCursor(0, 1); 
   lcd.print("LIMURU GIRLS");
   
 
@@ -44,6 +47,7 @@ void setup() {
 void loop() {
   switch (currentState) {
     case WAITING_FOR_PERSON:
+      lcd.clear();
       lcd.setCursor(0, 1);
       digitalWrite(NOT_OCCUPIED ,HIGH);
       lcd.print("Waiting       ");
@@ -51,6 +55,7 @@ void loop() {
       if (digitalRead(Person_IR_Pin) == LOW) {
           lcd.setCursor(0, 1);
       lcd.print("Welcome   ");
+      delay(2000);
         currentState = PERSON_DETECTED;
       }
       break;
@@ -60,7 +65,7 @@ void loop() {
          lcd.setCursor(0, 1);
          lcd.print("Occupied      ");
          digitalWrite(OCCUPIED ,HIGH);
-         
+         delay(2000);
         currentState = HANDS_NOT_WASHED;
       }
       break;
@@ -70,6 +75,7 @@ void loop() {
       lcd.print("Wash Hands!   ");
 
       if (digitalRead(Moisture_Sensor_Pin) == LOW) {
+        delay(2000);
         currentState = OPENING_DOOR;
       }
       break;
@@ -94,4 +100,3 @@ bool checkHandsWashed() {
   // Assuming a threshold value to determine if hands are washed
   return moistureLevel > 500; // Adjust threshold value as needed
 }
-  
