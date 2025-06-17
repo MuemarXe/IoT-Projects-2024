@@ -1,3 +1,12 @@
+/*
+Author: Evans Muema
+Date:23/3/2024
+Contact:muemarevans@gmail.com
+GitHub:MuemarXe
+I hope this Helps Fellow Embedded systems Engineer!!!!
+Enjoy!!!!
+*/
+
 #include <Wire.h> 
 // Include LCD display library for I2C
 #include <LiquidCrystal_I2C.h>
